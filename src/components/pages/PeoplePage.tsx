@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getPeople } from '../../api';
 import { Person } from '../../types';
 import { Loader } from '../Loader';
@@ -32,7 +31,9 @@ export const PeoplePage = () => {
         <p data-cy="noPeopleMessage">There are no people on the server</p>
       )}
 
-      {!isLoading && !error && people.length > 0 && <PeopleTable people={people} />}
+      {!isLoading && !error && people.length > 0 && (
+        <PeopleTable people={people} />
+      )}
     </>
   );
 };
