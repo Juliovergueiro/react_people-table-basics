@@ -1,6 +1,6 @@
 import React from 'react';
 import { Person } from '../../types';
-import { PersonLink } from '../PersonLink/PersonLink';
+import { PersonLink } from '../PersonLink';
 import { useParams } from 'react-router-dom';
 
 interface PeopleTableProps {
@@ -8,7 +8,9 @@ interface PeopleTableProps {
 }
 
 export const PeopleTable = ({ people }: PeopleTableProps) => {
-  const { slug } = useParams<{ slug: string }>();
+  // Fallback to wildcard param if slug is undefined
+  const params = useParams<{ slug?: string; '*': string }>();
+  const slug = params.slug ?? params['*'];
 
   return (
     <div className="block">
@@ -36,7 +38,7 @@ export const PeopleTable = ({ people }: PeopleTableProps) => {
                 className={person.slug === slug ? 'has-background-warning' : ''}
               >
                 <td>
-                  <PersonLink person={person} />
+                  <PersonLink person={person} people={people} />
                 </td>
                 <td>{person.sex}</td>
                 <td>{person.born}</td>

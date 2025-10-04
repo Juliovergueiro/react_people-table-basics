@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './components/pages/HomePage';
 import { PeoplePage } from './components/pages/PeoplePage';
@@ -5,7 +6,6 @@ import { NotFoundPage } from './components/pages/NotFoundPage';
 import { Navbar } from './components/Navbar';
 
 import './App.scss';
-import React from 'react';
 
 export const App = () => (
   <>
